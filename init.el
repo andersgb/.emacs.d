@@ -2,6 +2,27 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
+
+(when (not package-archive-contents)
+    (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(add-to-list 'load-path "~/.emacs.d/custom")
+
+(require 'setup-general)
+(if (version< emacs-version "24.4")
+    (require 'setup-ivy-counsel)
+  (require 'setup-helm)
+  (require 'setup-helm-gtags))
+;; (require 'setup-ggtags)
+(require 'setup-cedet)
+(require 'setup-editing)
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 (load-theme 'solarized t)
 
@@ -47,7 +68,16 @@
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(fill-column 100))
+ '(fill-column 100)
+ '(package-selected-packages
+   (quote
+    (zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu)))
+ '(safe-local-variable-values
+   (quote
+    ((helm-make-cache-targets t)
+     (helm-make-do-save t)
+     (helm-make-build-dir . "build/")
+     (helm-make-build-dir . "build")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
