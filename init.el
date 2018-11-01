@@ -28,6 +28,8 @@
 
 (tool-bar-mode -1)
 
+(unless (package-installed-p 'ido-vertical-mode)
+  (package-install 'ido-vertical-mode))
 (require 'ido-vertical-mode)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
@@ -35,6 +37,8 @@
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
 (projectile-mode 1)
+(unless (package-installed-p 'smex)
+  (package-install 'smex))
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
@@ -57,6 +61,9 @@
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 ;; keybindings
+(unless (package-installed-p 'magit)
+  (package-install 'magit))
+
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "<f7>") 'recompile)
 
