@@ -14,15 +14,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 
-(require 'setup-general)
-(if (version< emacs-version "24.4")
-    (require 'setup-ivy-counsel)
-  (require 'setup-helm)
-  (require 'setup-helm-gtags))
-;; (require 'setup-ggtags)
-(require 'setup-cedet)
-(require 'setup-editing)
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 (load-theme 'solarized t)
 
