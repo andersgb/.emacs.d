@@ -51,6 +51,10 @@
 
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
+
+;; js indent level
+(setq-default js-indent-level 2)
+
 ;; keybindings
 (unless (package-installed-p 'magit)
   (package-install 'magit))
@@ -66,16 +70,18 @@
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(fill-column 100)
+ '(fill-column 80)
+ '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu)))
+    (go-mode dockerfile-mode protobuf-mode paredit clojure-mode matlab-mode groovy-mode csharp-mode zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu)))
  '(safe-local-variable-values
    (quote
     ((helm-make-cache-targets t)
      (helm-make-do-save t)
      (helm-make-build-dir . "build/")
-     (helm-make-build-dir . "build")))))
+     (helm-make-build-dir . "build"))))
+ '(typescript-indent-level 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -105,3 +111,6 @@
 
 ;; optional key bindings, easier than hs defaults
 (define-key nxml-mode-map (kbd "C-c h") 'hs-toggle-hiding)
+
+(require 'recentf)
+(recentf-mode 1)
